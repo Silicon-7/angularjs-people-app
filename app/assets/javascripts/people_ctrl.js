@@ -21,6 +21,8 @@
         $scope.people.push(response.data);
         $scope.newPersonName = null;
         $scope.newPersonBio = null;
+      }, function(errors) {
+        $scope.errors = errors.data;
       });
     };
 

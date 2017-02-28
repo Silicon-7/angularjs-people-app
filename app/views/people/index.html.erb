@@ -9,6 +9,7 @@
     </div>
 
     <div id="new-person-form">
+      <li ng-repeat="error in errors track by $index">{{ error }}</li>
       Name: <input type="text" ng-model="newPersonName">
       Bio: <input type="text" ng-model="newPersonBio">
       <button ng-click="addPerson(newPersonName, newPersonBio)">Add Person</button>
