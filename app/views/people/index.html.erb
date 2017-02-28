@@ -3,7 +3,7 @@
   <div ng-controller="peopleCtrl" ng-init="setup()">
     <div ng-repeat="person in people">
       <h3 ng-click="toggleBio(person)">{{ person.name }}</h3>
-      <p ng-class="{strike: person.bioVisible}">{{ person.bio }} 
+      <p ng-if="person.bioVisible">{{ person.bio }} 
         <a href="#" ng-click="deletePerson(person)">Delete</a>
       </p>
     </div>

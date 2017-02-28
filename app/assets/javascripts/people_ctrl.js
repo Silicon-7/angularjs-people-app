@@ -15,12 +15,13 @@
     $scope.addPerson = function(newName, newBio) {
       var person = {
                     name: newName,
-                    bio: newBio,
-                    bioVisible: false
+                    bio: newBio
                     };
-      $scope.people.push(person);
-      $scope.newPersonName = null;
-      $scope.newPersonBio = null;
+      $http.post('/api/v1/people.json', person).then(function(response) {
+        $scope.people.push(response.data);
+        $scope.newPersonName = null;
+        $scope.newPersonBio = null;
+      });
     };
 
     $scope.deletePerson = function(person) {
