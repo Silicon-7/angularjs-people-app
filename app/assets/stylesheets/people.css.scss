@@ -1,3 +1,60 @@
 .strike {
   text-decoration: line-through;
 }
+
+table {
+  width: 80%;
+  margin: 25px auto;
+}
+
+th, td {
+  border: 1px solid black;
+}
+
+tr#headers th {
+  background-color: darkgreen;
+  color: white;
+}
+
+.delete-button {
+  color: red;
+}
+
+#ascending-markers {
+  height: 15px;
+}
+
+
+.ng-enter{
+  -webkit-animation: flipInX 1s;
+  -moz-animation: flipInX 1s;
+  -o-animation: flipInX 1s;
+  animation: flipInX 1s;
+}
+
+.ng-move{
+  -webkit-animation: flip 1s;
+  -moz-animation: flip 1s;
+  -o-animation: flip 1s;
+  animation: flip 1s;
+}
+
+.ng-leave{
+  -webkit-animation: flipOutX 1s;
+  -moz-animation: flipOutX 1s;
+  -o-animation: flipOutX 1s;
+  animation: flipOutX 1s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

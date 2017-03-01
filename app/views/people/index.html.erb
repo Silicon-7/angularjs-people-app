@@ -1,17 +1,33 @@
 <h1>Interesting People</h1>
 <div ng-app="app">
   <div ng-controller="peopleCtrl" ng-init="setup()">
-    <div>
-      <input type="text" ng-model="nameFilter">
-      <button ng-click="toggleOrderAttribute('name')">order by name</button>
-      <button ng-click="toggleOrderAttribute('bio')">order by bio</button>
-    </div>
 
+    <datalist id="names">
+      <option ng-repeat="person in people">{{ person.name }}</option>
+    </datalist>
+
+    <div>
+      Filter Name: <input type="text" ng-model="nameFilter" list="names">
+    </div>
+    
+    <table>
+      <tr id="headers">
+        <th ng-click="toggleOrderAttribute('name')">Name</th>
+        <th ng-click="toggleOrderAttribute('bio')">Bio</th>
+        <th> </th>
+      </tr>
+      <tr id="ascending-markers">
+        <th>{{ arrowForOrder('name') }}</th>
+        <th>{{ arrowForOrder('bio') }}</th>
+        <th></th>
+      </tr>
+      <tr ng-repeat="person in people | filter: { name: nameFilter } | orderBy:orderAttribute:descending">
+        <td>{{ person.name }}</td>
+        <td>{{ person.bio }} </td>
+        <td class="delete-button" ng-click="deletePerson(person)">Delete</td>
+      </tr>
+    </table>
     <div ng-repeat="person in people | filter: { name: nameFilter } | orderBy:orderAttribute:descending">
-      <h3 ng-click="toggleBio(person)">{{ person.name }}</h3>
-      <p ng-if="person.bioVisible">{{ person.bio }} 
-        <a href="#" ng-click="deletePerson(person)">Delete</a>
-      </p>
     </div>
 
     <div id="new-person-form">

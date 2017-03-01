@@ -40,6 +40,14 @@
       $scope.orderAttribute = attribute;
     };
 
+    $scope.arrowForOrder = function(attribute) {
+      if (attribute === $scope.orderAttribute) {
+        return $scope.descending ? "^" : "v";
+      } else {
+        return " ";
+      }
+    };
+
     window.scope = $scope;
   });
 
