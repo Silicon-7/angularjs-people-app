@@ -1,7 +1,13 @@
 <h1>Interesting People</h1>
 <div ng-app="app">
   <div ng-controller="peopleCtrl" ng-init="setup()">
-    <div ng-repeat="person in people">
+    <div>
+      <input type="text" ng-model="nameFilter">
+      <button ng-click="toggleOrderAttribute('name')">order by name</button>
+      <button ng-click="toggleOrderAttribute('bio')">order by bio</button>
+    </div>
+
+    <div ng-repeat="person in people | filter: { name: nameFilter } | orderBy:orderAttribute:descending">
       <h3 ng-click="toggleBio(person)">{{ person.name }}</h3>
       <p ng-if="person.bioVisible">{{ person.bio }} 
         <a href="#" ng-click="deletePerson(person)">Delete</a>
